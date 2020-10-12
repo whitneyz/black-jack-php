@@ -12,7 +12,7 @@ class Player
     {
 
     }
-}
+
 
 //surrender
 public function surrender ()
@@ -25,7 +25,7 @@ public function getScore ()
 {
 
 }
-}
+
 //hasLost
 public function  hasLost()
 {
