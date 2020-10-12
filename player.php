@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 class Player
 {
     private $cards = [];
@@ -27,7 +27,7 @@ public function getScore ()
 }
 }
 //hasLost
-public function hasLoste ()
+public function  hasLost()
 {
 
 }
@@ -51,3 +51,6 @@ public function hasLoste ()
 
 //method
 //A class method is exactly similar to PHP functions.
+
+//construct
+//__construct ([ mixed $args = "" [, $... ]] ) : void
