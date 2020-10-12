@@ -1,6 +1,7 @@
 <?php
 declare(strict_types=1);
 
+whatshappening();
 class Blackjack
 {
     //properties
@@ -27,6 +28,6 @@ class Blackjack
 
     }
 }
-
+//var_dump();
 
 ?>

@@ -32,7 +32,7 @@ public function  hasLost()
 
 }
 }
-
+//var_dump();
 ?>
 // todo google some basic OOP articles
 //todo First spent some time reading these classes and really understand what they are doing.
