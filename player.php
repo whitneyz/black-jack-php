@@ -20,7 +20,7 @@ class Player
 
 //hit
 
-    public function hit(Deck $deck)/*ask for more cards, stands down means the player does nothing
+    public function hit($deck)/*ask for more cards, stands down means the player does nothing
     it's the dealer turn now, the dealer will draw cards until he has 15 points or more
     than it's the player turn again
     if the dealer has more than 21 points he lose*/
@@ -31,9 +31,9 @@ return $this->cards;
 
 
 //surrender
-    public function surrender()// see also function hasLost
+    public function surrender($deck)// see also function hasLost
     {
-
+//should stop the game because player lost
     }
 
 //getScore
