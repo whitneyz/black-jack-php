@@ -4,6 +4,17 @@ ini_set("display_errors", "1");
 ini_set("display_startup_errors", "1");
 error_reporting(E_ALL);
 
+session_start();
+//Save the instance of the enitre Blackjackobject in the session
+/*$object = new sample_object();
+$_SESSION['sample'] = serialize($object);*/
+
+$game = new Blackjack();// create new variable and refer to class, step 9
+$_SESSION["Black"] = $game;
+$giveCards = new Deck();
+$_SESSION["Decks"] = $giveCards;
+
+
 function whatIsHappening()
 {
     echo '<h2>$_GET</h2>';
@@ -19,8 +30,7 @@ function whatIsHappening()
 whatIsHappening();
 
 
-
-var_dump();
+var_dump(whatIsHappening());// todo correct?
 //this is what u use to display cards
 /*$deck = new Deck();
 $deck->shuffle();

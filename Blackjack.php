@@ -7,7 +7,7 @@ class Blackjack
     private $dealer;
     private $deck;
 
-    public function __construct($player, $dealer) //todo do I need to remove $player and $dealer
+    public function __construct()
     {
         $deck = new Deck; //create a new deck object
         $this->deck = $deck; //make ik require this object in the Player class
