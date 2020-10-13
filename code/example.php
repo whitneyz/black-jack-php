@@ -24,7 +24,7 @@ require 'Deck.php';
 
 $deck = new Deck();
 $deck->shuffle();
-foreach($deck->getCards() AS $card) {
+foreach($deck->getCards() AS $card) { //this is what u use to display cards
     echo $card->getUnicodeCharacter(true);
     echo '<br>';
 }

@@ -24,13 +24,14 @@ class Blackjack
     private $dealer;
     private $deck;
 
-    public function __construct($player, $dealer)
+    public function __construct($player, $dealer) //todo do I need to remove $player and $dealer
     {
-        $this->player = new Player(); // instantiate the Player class insert it into the player property
-        $this->dealer = new Player();//  instantiate the Player class insert it into the dealer property
-        $deck = new Deck;
-        $this->deck = $deck; //make ik require this object
+        $deck = new Deck; //create a new deck object
+        $this->deck = $deck; //make ik require this object in the Player class
         $this->deck->shuffle();
+        $this->player = new Player($deck); // instantiate the Player class insert it into the player property
+        $this->dealer = new Player($deck);//  instantiate the Player class insert it into the dealer property
+
     }
 
     // getDealer add public method
