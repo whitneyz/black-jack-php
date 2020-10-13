@@ -23,23 +23,27 @@ class Player
     private $cards = [];
     private $lost;
 
-    public function __construct($deck)
-    {//need to use pusharray to draw two cards
-        $this->cards = [];//player and dealer get 2 random cards
-        $deck->drawCard();
+    public function __construct(Deck $deck)//passed the Deck from the Blackjack constructor
+    {
+        $this ->cards[]= $deck;
+        array_push($this->cards,$deck->drawCard(), $deck); //player and dealer get 2 random cards
+        $deck->drawCard(); //draw one card
     }
 
 
 //hit
 
-    public function hit()
+    public function hit() /*ask for more cards, stands down means the player does nothing
+    it's the dealer turn now, the dealer will draw cards until he has 15 points or more
+    than it's the player turn again
+    if the dealer has more than 21 points he lose*/
     {
 
     }
 
 
 //surrender
-    public function surrender()
+    public function surrender()// see also function hasLost
     {
 
     }
@@ -51,14 +55,14 @@ class Player
     }
 
 //hasLost
-    public function hasLost()
+    public function hasLost()//player has more than 21 points
     {
 
     }
 }
 
 
- /*face card jack, king, or queen = 10
+/*face card jack, king, or queen = 10
 Ace = 11
 
 object = properties and methods (also called instances)
