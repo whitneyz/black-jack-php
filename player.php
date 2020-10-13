@@ -4,19 +4,7 @@ ini_set("display_errors", "1");
 ini_set("display_startup_errors", "1");
 error_reporting(E_ALL);
 
-function whatIsHappening()
-{
-    echo '<h2>$_GET</h2>';
-    var_dump($_GET);
-    echo '<h2>$_POST</h2>';
-    var_dump($_POST);
-    echo '<h2>$_COOKIE</h2>';
-    var_dump($_COOKIE);
-    echo '<h2>$_SESSION</h2>';
-    var_dump($_SESSION);
-}
 
-whatIsHappening();
 
 class Player
 {
@@ -25,20 +13,20 @@ class Player
 
     public function __construct(Deck $deck)//passed the Deck from the Blackjack constructor
     {
-        $this ->cards[]= $deck;
-        array_push($this->cards,$deck->drawCard(), $deck); //player and dealer get 2 random cards
-        $deck->drawCard(); //draw one card
+        array_push($this->cards,$deck->drawCard());
+        array_push($this->cards,$deck->drawCard()); //player and dealer get 2 random cards
     }
 
 
 //hit
 
-    public function hit() /*ask for more cards, stands down means the player does nothing
+    public function hit(Deck $deck)/*ask for more cards, stands down means the player does nothing
     it's the dealer turn now, the dealer will draw cards until he has 15 points or more
     than it's the player turn again
     if the dealer has more than 21 points he lose*/
     {
-
+        array_push($this->cards,$deck->drawCard());
+return $this->cards;
     }
 
 
