@@ -13,7 +13,7 @@ session_start(); /* should always come after require
 Save the instance of the entire Blackjack object in the session*/
 
 
-/*function whatIsHappening()
+function whatIsHappening()
 {
     echo '<h2>$_GET</h2>';
     var_dump($_GET);
@@ -23,12 +23,10 @@ Save the instance of the entire Blackjack object in the session*/
     var_dump($_COOKIE);
     echo '<h2>$_SESSION</h2>';
     var_dump($_SESSION);
-}*/
+}
 
-//whatIsHappening();
+whatIsHappening();
 
-
-//var_dump(whatIsHappening());// todo correct?
 
 //todo this is what too use to display cards, it's from the example.php
 /*$deck = new Deck();
@@ -44,35 +42,39 @@ if player has more than dealer && <= 21
 else dealer won
 
 //The dealer is obligated to keep taking cards until they have at least 15 points.*/
-
+$game = new Blackjack();
 if(!isset($_SESSION["Black"])){ //! when session black is not set than run code??
-    $_SESSION["Black"]= new Blackjack();
+    $_SESSION["Black"]= $game;
+}else{
+    $game = $_SESSION["Black"];
 }
 
 
 if(isset($_POST["hit"])) {
-    $deck =  $_SESSION["Black"]->getDeck();
-    $player =  $_SESSION["Black"]->getPlayer();
+    $deck =  $game->getDeck();
+    $player =  $game->getPlayer();
  var_dump($player->hit($deck));
-$deck = new Deck();
-$deck->shuffle();
-foreach($deck->getCards() AS $card) { // used to display cards
-    echo $card->getUnicodeCharacter(true);
-    echo '<br>';
-}
+
 }
 if(isset($_POST["stand"])) {
-    $deck =  $_SESSION["Black"]->getDeck();
-    $dealer =  $_SESSION["Black"]->getDealer();
-    var_dump($dealer->hit($deck));//should show images cards
+    $deck =  $game->getDeck();
+    $dealer =  $game->getDealer();
+    var_dump($dealer->stand($deck));//should show images cards
 }
 if(isset($_POST["surrender"])) {
-    $deck =  $_SESSION["Black"]->getDeck();//todo should be no deck because game is over, How?????
-    $dealer =  $_SESSION["Black"]->getDealer();
-    var_dump($dealer->hit($deck));//should show images cards
-
+    //todo should be no deck because game is over, How?????
+    $lost =  $game->getDealer() ();
+    $deck =  $game->getDeck();
+    var_dump($player->surrender($deck));//should show images cards
+foreach($deck->getCards() AS $card) { //this is what u use to display cards
+    echo $card->getUnicodeCharacter(true);
+    echo '';
+}
 }
 
+if(isset($_POST["game"])) {
+    unset($_SESSION["Black"]);
+}
 
 
 

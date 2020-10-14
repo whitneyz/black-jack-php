@@ -5,50 +5,62 @@ ini_set("display_startup_errors", "1");
 error_reporting(E_ALL);
 
 
-
 class Player
 {
     private $cards = [];
     private $lost;
 
+
     public function __construct(Deck $deck)//passed the Deck from the Blackjack constructor
     {
-        array_push($this->cards,$deck->drawCard());
-        array_push($this->cards,$deck->drawCard()); //player and dealer get 2 random cards
+        array_push($this->cards, $deck->drawCard());
+        array_push($this->cards, $deck->drawCard()); //player and dealer get 2 random cards
     }
 
 
 //hit
 
-    public function hit($deck)/*ask for one more card, stands down means the player does nothing
+    public function hit(Deck $deck)/*ask for one more card, stands down means the player does nothing
     it's the dealer turn now, the dealer will draw cards until he has 15 points or more
     than it's the player turn again
     if the dealer has more than 21 points he loses*/
     {
-        array_push($this->cards,$deck->drawCard());
-return $this->cards;
-if ($this->cards >= 21) {
-   return $this->hasLost();
-}
+        /*array_push($this->cards, $deck->drawCard());
+        //todo foreach loop over de value in de cards array
+        //foreach ($this->cards as )*/
+
+        echo $this->countScore()."Hello";
+        var_dump($this->cards);
     }
 
-
+    public function countScore() {
+        $totalValue = 0;
+        $this->cards = [];
+        for ($i = 0; $i < count($this->cards); $i++) {
+$totalValue =  $totalValue + $this->cards[$i]->getValue();
+        }
+        return $totalValue;
+    }
 //surrender
-    public function surrender($deck)// see also function hasLost
+    public function surrender(Deck $deck)// see also function hasLost
     {
+        $this ->lost = true;
+        echo "You have lost";
 //should stop the game because player lost
     }
 
 //getScore
     public function getScore()
-    {return $this->getScore();
+    {
+        return $this->getScore();
 
     }
 
 //hasLost
     public function hasLost()//player has more than 21 points
-    {return $this->lost;
-    echo "Player has lost";
+    {
+        return $this->lost;
+        echo "Player has lost";
 
     }
 }
