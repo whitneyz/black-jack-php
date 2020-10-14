@@ -53,7 +53,13 @@ if(!isset($_SESSION["Black"])){ //! when session black is not set than run code?
 if(isset($_POST["hit"])) {
     $deck =  $_SESSION["Black"]->getDeck();
     $player =  $_SESSION["Black"]->getPlayer();
- var_dump($player->hit($deck));//should show images cards
+ var_dump($player->hit($deck));
+$deck = new Deck();
+$deck->shuffle();
+foreach($deck->getCards() AS $card) { // used to display cards
+    echo $card->getUnicodeCharacter(true);
+    echo '<br>';
+}
 }
 if(isset($_POST["stand"])) {
     $deck =  $_SESSION["Black"]->getDeck();
@@ -64,7 +70,9 @@ if(isset($_POST["surrender"])) {
     $deck =  $_SESSION["Black"]->getDeck();//todo should be no deck because game is over, How?????
     $dealer =  $_SESSION["Black"]->getDealer();
     var_dump($dealer->hit($deck));//should show images cards
+
 }
+
 
 
 
@@ -85,6 +93,7 @@ if(isset($_POST["surrender"])) {
 </head>
 <body>
 <form method="post">
+    <button type="submit" name="game" class="btn btn-success">New Game</button>
     <button type="submit" name="hit" class="btn btn-primary btn-lg btn-block">Hit</button>
     <button type="submit" name="stand" class="btn btn-secondary btn-lg btn-block">Stand</button>
     <button type="submit" name="surrender" class="btn btn-danger btn-lg btn-block">Surrender</button>

@@ -20,13 +20,16 @@ class Player
 
 //hit
 
-    public function hit($deck)/*ask for more cards, stands down means the player does nothing
+    public function hit($deck)/*ask for one more card, stands down means the player does nothing
     it's the dealer turn now, the dealer will draw cards until he has 15 points or more
     than it's the player turn again
-    if the dealer has more than 21 points he lose*/
+    if the dealer has more than 21 points he loses*/
     {
         array_push($this->cards,$deck->drawCard());
 return $this->cards;
+if ($this->cards >= 21) {
+   return $this->hasLost();
+}
     }
 
 
@@ -38,13 +41,14 @@ return $this->cards;
 
 //getScore
     public function getScore()
-    {
+    {return $this->getScore();
 
     }
 
 //hasLost
     public function hasLost()//player has more than 21 points
-    {
+    {return $this->lost;
+    echo "Player has lost";
 
     }
 }
